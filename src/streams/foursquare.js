@@ -36,6 +36,7 @@ getVenuesByLocation$
         pluck('0'),
         pluck('items'),
         map(items => items.map(item => item.venue)),
+        map(venues => venues.sort((v1, v2) => v1.location.distance - v2.location.distance)),
         catchError(console.log),
       ),
     ),
