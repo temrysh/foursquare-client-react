@@ -1,0 +1,38 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "jest": true
+  },
+  "rules": {
+    "no-undef": "error",
+    "no-unused-vars": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": ["error"],
+    "react/jsx-key": "error",
+    "react/no-array-index-key": "error",
+    "no-console": "error",
+    "no-debugger": "error",
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "object-property-newline": "error",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline"
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreStrings": true,
+        "ignoreRegExpLiterals": true
+      }
+    ]
+  }
+}
