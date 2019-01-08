@@ -4,28 +4,32 @@ import Greetings from '../components/greetings'
 
 import { withStreams } from '../utils/stream-provider'
 import { getUserLocation$, userLocation$ } from '../streams/location'
+import { getVenuesByLocation$, venues$ } from '../streams/foursquare'
 
 class App extends Component {
-  componentDidMount() {
-    getUserLocation$.next()
+  componentDidUpdate() {
+    const { userLocation } = this.props
+    userLocation && getVenuesByLocation$.next(userLocation)
   }
 
   render() {
     const { userLocation } = this.props
-    const { latitude = 0, longitude = 0 } = userLocation || {}
+    const { venues = [] } = this.props
 
     return (
       <div>
         {userLocation ? (
-          <div>
-            Your latitude is {latitude}, and your longitude is {longitude}{' '}
-          </div>
+          venues.map(v => <p key={v.venue.id}>{v.venue.name}</p>)
         ) : (
-          <Greetings />
+          <Greetings
+            onClick={() => {
+              getUserLocation$.next()
+            }}
+          />
         )}
       </div>
     )
   }
 }
 
-export default withStreams(App)('userLocation')(userLocation$)
+export default withStreams(App)('userLocation', 'venues')(userLocation$, venues$)

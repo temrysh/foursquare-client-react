@@ -8,7 +8,7 @@ export const withStreams = WrappedComponent => (...streamNames) => (...streams) 
     constructor(props) {
       super(props)
       this.state = {
-        streams: {},
+        streamsValues: {},
       }
     }
 
@@ -27,13 +27,13 @@ export const withStreams = WrappedComponent => (...streamNames) => (...streams) 
       this._subscription && this._subscription.unsubscribe && this._subscription.unsubscribe()
     }
 
-    handleUpdate = streams => {
+    handleUpdate = streamsValues => {
       this.setState(() => ({
-        streams,
+        streamsValues,
       }))
     }
 
     render() {
-      return <WrappedComponent {...this.props} {...this.state.streams} />
+      return <WrappedComponent {...this.props} {...this.state.streamsValues} />
     }
   }

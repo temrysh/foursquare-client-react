@@ -1,3 +1,7 @@
 import React from 'react'
 
-export default props => <div>Share your location, please</div>
+export default ({ onClick }) => (
+  <p>
+    Please, <button onClick={onClick}>Share</button> your location
+  </p>
+)
