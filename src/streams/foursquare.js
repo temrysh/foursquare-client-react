@@ -1,7 +1,9 @@
 import { Subject, BehaviorSubject, from } from 'rxjs'
-import { switchMap, map, pluck, catchError } from 'rxjs/operators'
+import { switchMap, map, pluck, catchError, filter } from 'rxjs/operators'
 
 import { pipe, withChar, withCliendId, withClientSeecret, withVersion, withLL, getYYYYMMDD } from '../utils/endpoint'
+
+import { userLocation$ } from './location'
 
 const clientId = process.env.REACT_APP_CLIENT_ID
 const clientSecret = process.env.REACT_APP_CLIENT_SECRET
@@ -33,8 +35,11 @@ getVenuesByLocation$
         pluck('groups'),
         pluck('0'),
         pluck('items'),
+        map(items => items.map(item => item.venue)),
         catchError(console.log),
       ),
     ),
   )
   .subscribe(venues$)
+
+userLocation$.pipe(filter(location => !!location)).subscribe(getVenuesByLocation$)
