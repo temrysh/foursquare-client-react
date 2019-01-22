@@ -34,8 +34,11 @@ const CardContent = styled.p`
 
 const CardFooter = styled.p`
   color: #4e595d;
+  background-color: #f5f6f6;
+  padding: 15px;
   margin: 0;
   margin-top: 40px;
+  border-radius: 3px;
 `
 
 const DistanceIndicator = styled.span`
