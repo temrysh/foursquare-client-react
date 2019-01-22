@@ -37,7 +37,7 @@ const CardFooter = styled.p`
   background-color: #f5f6f6;
   padding: 15px;
   margin: 0;
-  margin-top: 40px;
+  margin-top: 30px;
   border-radius: 3px;
 `
 
