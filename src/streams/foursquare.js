@@ -22,7 +22,7 @@ const getEndpoint = ll =>
   )(baseEndpoint)
 
 export const getVenuesByLocation$ = new Subject()
-export const venues$ = new BehaviorSubject([])
+export const venues$ = new BehaviorSubject(null)
 
 getVenuesByLocation$
   .pipe(
